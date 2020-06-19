@@ -1,0 +1,27 @@
+.house-create-house {
+    &__canvas-toolbar {
+        height: 42px;
+        width: 900px;
+        border: 2px solid #25AFF3;
+        display: flex;
+
+    }
+
+    &__create-btn {
+        background-color: #05DFD7;
+        box-shadow: 4px 4px #000;
+        width: 200px;
+    }
+
+    &__delete-btn {
+        box-shadow: 4px 4px #000;
+        width: 200px;
+        margin-left: 8px;
+    }
+}
+
+
+.action-item {
+    cursor: pointer;
+    margin: 5px;
+}

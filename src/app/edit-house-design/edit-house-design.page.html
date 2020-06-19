@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-row class="ion-align-items-center">
+        <div class="sketch-logo-sm">
+          <img src="assets/icon/logo.png" alt="Edit" />
+        </div>
+        &nbsp;Edit House
+      </ion-row>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="backToList()"> Back to List</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="houseForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input type="text" formControlName="name" name="name" required="true" maxlength="50"></ion-input>
+
+          </ion-item>
+          <div *ngIf="name.errors && name.touched">
+            <span *ngIf="name.errors?.required" class="sketch-error">
+              Name required
+            </span><br>
+            <span *ngIf="name.errors?.maxlength" class="sketch-error">
+              Name should have 50 characters or less
+            </span>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="stacked">Description</ion-label>
+            <ion-textarea formControlName="description" name="description" minlength="10" required="true">
+            </ion-textarea>
+
+          </ion-item>
+          <div *ngIf="description.errors && description.touched">
+            <span *ngIf="description.errors?.required" class="sketch-error">
+              Description required
+            </span> <br>
+            <span *ngIf="description.errors?.minlength" class="sketch-error">
+              Description should have a minimum of 10 characters
+            </span>
+            <span *ngIf="description.errors?.maxlength" class="sketch-error">
+              Description should have 200 characters or less
+            </span>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-margin-top" style="display: flex; flex-direction: column;">
+        <ion-row class="ion-align-items-center">
+          <ion-button class="house-create-house__create-btn ion-margin-top" color="primary" (click)="addHouseItem()">
+            Add House Item
+          </ion-button>
+          <ion-button class="house-create-house__delete-btn ion-margin-top" color="danger" (click)="addHouseItem()">
+            Remove All Item
+          </ion-button>
+          <ng-container *ngIf="activeItem">
+            <img (click)="deleteActiveItem()" class="action-btn" src="assets/icon/delete.png" alt="Delete" height="42">
+            <img (click)="saveActiveItem()" class="action-btn" src="assets/icon/check.png" alt="Check" height="42">
+            <small><b>Hint:</b> Use arrow keys to move the item or mouse drag</small>
+            <ion-button size="small" class="ion-margin-top" color="primary" (click)="moveActiveItemToTop()">
+              Move To Top
+            </ion-button>
+            <ion-button size="small" class="ion-margin-top" color="danger" (click)="moveActiveItemToBottom()">
+              Move To Bottom
+            </ion-button>
+          </ng-container>
+        </ion-row>
+        <div id="editHouseContainer" class="ion-margin-top">
+
+        </div>
+      </ion-row>
+      <ion-row>
+        <ion-button [disabled]=" !houseForm.valid || isCreating " (click)="createHouse()"
+          class="house-create-house__create-btn ion-margin-top" color="primary">
+          <img *ngIf="!isCreating; else loading" src="assets/icon/edit.png" height="24" alt="Edit">
+          <ng-template #loading>
+            <img src="assets/icon/loader.gif" alt="Loader" height="24" alt="Loading">
+          </ng-template>
+
+          &nbsp;Save House
+        </ion-button>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>

@@ -7,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
   constructor(
@@ -19,6 +19,16 @@ export class AppComponent {
   }
 
   initializeApp() {
+    window.addEventListener(
+      'keydown',
+      function (e) {
+        // space and arrow keys
+        if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+          e.preventDefault();
+        }
+      },
+      false
+    );
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();

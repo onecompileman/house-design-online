@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-row class="ion-align-items-center">
+        <div class="sketch-logo-sm">
+          <img src="assets/icon/logo.png" alt="Edit" />
+        </div>
+        &nbsp;House Designs
+      </ion-row>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-item class="cursor-pointer" (click)="avatarClick($event)">
+        <ion-avatar slot="start">
+          <img [src]="user?.photoURL" />
+        </ion-avatar>
+        <ion-label>{{ user?.displayName }}</ion-label>
+      </ion-item>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid class="ion-margin-top">
+    <ion-row>
+      <div *ngFor="let house of houses" class="sketch-list-item">
+        <img [src]="house.thumbnailURL" alt="Thumbnail" width="350" />
+        <div (click)="viewHouse(house.id)" class="name cursor-pointer">{{ house.name }} by
+          <b>{{ house.owner ? house.owner.displayName : 'Unknown' }}</b></div>
+      </div>
+    </ion-row>
+  </ion-grid>
+</ion-content>

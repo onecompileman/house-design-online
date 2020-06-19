@@ -1,0 +1,118 @@
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <ion-list>
+          <ion-list-header>
+            House Item Types
+          </ion-list-header>
+
+          <ion-item (click)="activeHouseItemType = houseItemType.APPLIANCES; getHouseItems();">
+            <ion-avatar slot="start">
+              <img src="assets/images/appliances/1 (1).png">
+            </ion-avatar>
+            <ion-label>
+              <h2 [class.active]="activeHouseItemType === houseItemType.APPLIANCES">Appliances</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="activeHouseItemType = houseItemType.BATHROOMS; getHouseItems();">
+            <ion-avatar slot="start">
+              <img src="assets/images/bathrooms/1 (1).png">
+            </ion-avatar>
+            <ion-label>
+              <h2 [class.active]="activeHouseItemType === houseItemType.BATHROOMS">Bathrooms</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="activeHouseItemType = houseItemType.BEDS; getHouseItems();">
+            <ion-avatar slot="start">
+              <img src="assets/images/beds/1 (1).png">
+            </ion-avatar>
+            <ion-label>
+              <h2 [class.active]="activeHouseItemType === houseItemType.BEDS">Beds</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="activeHouseItemType = houseItemType.CABINETS; getHouseItems();">
+            <ion-avatar slot="start">
+              <img src="assets/images/cabinets/1 (1).png">
+            </ion-avatar>
+            <ion-label>
+              <h2 [class.active]="activeHouseItemType === houseItemType.CABINETS">Cabinets</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="activeHouseItemType = houseItemType.CHAIRS; getHouseItems();">
+            <ion-avatar slot="start">
+              <img src="assets/images/chairs/1 (1).png">
+            </ion-avatar>
+            <ion-label>
+              <h2 [class.active]="activeHouseItemType === houseItemType.CHAIRS">Chairs</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="activeHouseItemType = houseItemType.DOORS; getHouseItems();">
+            <ion-avatar slot="start">
+              <img src="assets/images/doors/1 (1).png">
+            </ion-avatar>
+            <ion-label>
+              <h2 [class.active]="activeHouseItemType === houseItemType.DOORS">Doors</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="activeHouseItemType = houseItemType.MATS; getHouseItems();">
+            <ion-avatar slot="start">
+              <img src="assets/images/mats/1 (1).png">
+            </ion-avatar>
+            <ion-label>
+              <h2 [class.active]="activeHouseItemType === houseItemType.MATS">Mats</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="activeHouseItemType = houseItemType.OTHERS; getHouseItems();">
+            <ion-avatar slot="start">
+              <img src="assets/images/others/1 (1).png">
+            </ion-avatar>
+            <ion-label>
+              <h2 [class.active]="activeHouseItemType === houseItemType.OTHERS">Others</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="activeHouseItemType = houseItemType.SOFAS; getHouseItems();">
+            <ion-avatar slot="start">
+              <img src="assets/images/sofas/1 (1).png">
+            </ion-avatar>
+            <ion-label>
+              <h2 [class.active]="activeHouseItemType === houseItemType.SOFAS">Sofas</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="activeHouseItemType = houseItemType.TABLES; getHouseItems();">
+            <ion-avatar slot="start">
+              <img src="assets/images/tables/1 (1).png">
+            </ion-avatar>
+            <ion-label>
+              <h2 [class.active]="activeHouseItemType === houseItemType.TABLES">Tables</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="activeHouseItemType = houseItemType.TILES; getHouseItems();">
+            <ion-avatar slot="start">
+              <img src="assets/images/tile.png">
+            </ion-avatar>
+            <ion-label>
+              <h2 [class.active]="activeHouseItemType === houseItemType.TILES">Tiles</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item (click)="activeHouseItemType = houseItemType.WALLS; getHouseItems();">
+            <ion-avatar slot="start">
+              <img src="assets/images/walls/1 (1).png">
+            </ion-avatar>
+            <ion-label>
+              <h2 [class.active]="activeHouseItemType === houseItemType.WALLS">Walls</h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+
+      <ion-col size="8">
+        <div class="house-item-container">
+          <div class="house-item" *ngFor="let houseItem of houseItems" (click)="onSelectItem(houseItem)">
+            <img [src]="houseItem.path" alt="House Item">
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

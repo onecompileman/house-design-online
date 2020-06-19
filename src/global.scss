@@ -24,3 +24,45 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+body {
+    background-color: #cecece;
+}
+
+div {
+    border-radius: 0;
+}
+
+.sketch-logo-sm {
+    margin: 10px;
+    height: 32px;
+    width: 32px;
+    background-color: white;
+    border: 2px solid #25AFF3;
+    border-radius: 3px;
+    box-shadow: 4px 4px #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sketch-error {
+    color: #dd5044;
+    font-size: 12px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.house-modal .modal-wrapper {
+    width: 100% !important;
+    margin: 30px;
+
+    max-width: 900px;
+    min-width: 300px;
+}
+
+.item {
+    cursor: pointer;
+}

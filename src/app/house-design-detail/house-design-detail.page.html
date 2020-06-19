@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-row class="ion-align-items-center">
+        <div class="sketch-logo-sm">
+          <img src="assets/icon/logo.png" alt="Edit" />
+        </div>
+        &nbsp;House
+      </ion-row>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="backToList()"> Back to List</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <b>Sketch by:</b>
+      <ion-item class="cursor-pointer">
+        <ion-avatar slot="start" *ngIf="house?.owner">
+          <img [src]="house.owner?.photoURL" />
+        </ion-avatar>
+        <ion-label>{{ house?.owner ? house.owner?.displayName : 'Unknown' }}</ion-label>
+      </ion-item>
+    </ion-row>
+
+    <ion-row>
+      <p>
+        <ion-label><b>Name:</b>&nbsp; {{ house?.name }}</ion-label>
+      </p>
+    </ion-row>
+    <ion-row>
+      <p>
+        <ion-label><b>Description:</b>&nbsp; {{ house?.description }}</ion-label>
+      </p>
+    </ion-row>
+    <ion-row>
+      <img [src]="house?.thumbnailURL" alt="Sketch" class="sketch">
+    </ion-row>
+  </ion-grid>
+</ion-content>
