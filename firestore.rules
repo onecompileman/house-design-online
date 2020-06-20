@@ -1,8 +1,37 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if true;
+   function isSignedIn() {
+        return request.auth != null;
+    }
+    
+   function checkHouseIfOwner(s) {
+      return s.data.owner.uid == request.auth.uid;
+    }
+    
+    function checkIfUser(u) {
+    	return u.data.uid == request.auth.uid;
+    }
+    
+    match /users {
+    	allow create, read;
+    }
+    
+    match /users/{user} {
+    	allow write: if isSignedIn() && checkIfUser(get(/databases/$(database)/documents/users/$(user)));
+    	allow read;
+      allow create;
+    }
+    
+    match /houses {
+      allow create,read: if isSignedIn(); 
+    }
+    
+    match /houses/{house} {
+    	allow delete, write: if isSignedIn() && checkHouseIfOwner(get(/databases/$(database)/documents/houses/$(house)));
+    	allow read;
+      allow create;
     }
   }
+  
 }
